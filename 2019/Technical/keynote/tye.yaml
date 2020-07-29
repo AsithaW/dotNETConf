@@ -4,7 +4,5 @@ services:
   project: ClimateControl/ClimateControl.csproj
 - name: weather
   project: Weather/Weather.csproj
-  bindings:
-    - protocol: https
 - name: blazor
   project: BlazorWeather.Server/BlazorWeather.Server.csproj
