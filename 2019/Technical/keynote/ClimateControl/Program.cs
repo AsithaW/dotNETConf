@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Json;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -8,12 +9,8 @@ using System.Net.Http;
 
 Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webBuilder =>
 {
-    webBuilder.Configure((builderContext, app) =>
+    webBuilder.Configure(app =>
     {
-        var client = new HttpClient
-        {
-            BaseAddress = builderContext.Configuration.GetServiceUri("pi")
-        };
         app.UseRouting();
         app.UseEndpoints(endpoints =>
         {
@@ -40,8 +37,6 @@ Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webBuilder =>
                         Console.WriteLine("Just right!");
                     }
                 }
-
-                await client.GetAsync($"/temperature/{temp}");
 
                 await context.Response.WriteAsJsonAsync(new { success = isSuccess });
             });
