@@ -1,12 +1,10 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Weather;
 using static Weather.Weather;
-using System.Threading.Tasks;
 
 namespace WeatherClientLib
 {

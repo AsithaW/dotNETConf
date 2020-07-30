@@ -14,12 +14,12 @@ namespace Weather
 {
     public class Startup
     {
-        private IConfiguration _configuration;
-
         public Startup(IConfiguration configuration)
         {
-            _configuration = configuration;
+            Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -27,7 +27,7 @@ namespace Weather
             
             services.AddHttpClient("AccuWeather", (client) =>
             {
-                client.BaseAddress = new Uri(_configuration["weather:uri"]);
+                client.BaseAddress = new Uri(Configuration["weather:uri"]);
             })
             .ConfigurePrimaryHttpMessageHandler(_ => new HttpClientHandler()
             {
@@ -37,14 +37,13 @@ namespace Weather
             services.AddHttpClient("ClimateControl", (client) =>
             {
                 // options.Address = new Uri("http://localhost:5040");
-                client.BaseAddress = _configuration.GetServiceUri("climatecontrol");
+                client.BaseAddress = Configuration.GetServiceUri("climatecontrol");
             });
 
             services.AddMemoryCache();
             services.AddHostedService<WeatherWorker>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
