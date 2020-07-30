@@ -7,10 +7,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Tye.Extensions.Configuration" Version="0.4.0-alpha.20371.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.8.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.23.1" />
+    <PackageReference Include="Grpc.Tools" Version="2.23.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.0.0-preview9.19457.4" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.0.0-rc1.19456.10" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WeatherClientLib\WeatherClientLib.csproj" />
+    <Protobuf Include="..\Weather\Protos\weather.proto" GrpcServices="Client" />
   </ItemGroup>
-
-</Project>
+ </Project>

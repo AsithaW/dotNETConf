@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WeatherClientLib;
 using WeatherServiceML;
+using static Weather.Weather;
 
 namespace BlazorWeather
 {
@@ -22,12 +22,13 @@ namespace BlazorWeather
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddGrpcWeatherForecastService(options =>
+            services.AddGrpcClient<WeatherClient>(options =>
             {
                 // options.Address = new Uri("https://localhost:5039");
                 options.Address = Configuration.GetServiceUri("weather");
                 Console.WriteLine($"Backend URL is {options.Address}");
             });
+
             services.AddScoped<IWeatherClassifier, WeatherClassifier>();
         }
 
