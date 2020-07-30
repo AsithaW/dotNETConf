@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Net.Http;
 
 Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webBuilder =>
 {
@@ -26,15 +25,15 @@ Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webBuilder =>
                 {
                     if (temp <= (perfectTemperature - tolerance))
                     {
-                        Console.WriteLine("Too cold!");
+                        Console.WriteLine($"{temp} is too cold!");
                     }
                     else if (temp >= (perfectTemperature + tolerance))
                     {
-                        Console.WriteLine("Too hot!");
+                        Console.WriteLine($"{temp} is too hot!");
                     }
                     else
                     {
-                        Console.WriteLine("Just right!");
+                        Console.WriteLine($"{temp} is just right!");
                     }
                 }
 

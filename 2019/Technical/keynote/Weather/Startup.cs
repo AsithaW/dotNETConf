@@ -46,6 +46,7 @@ namespace Weather
             });
             services.AddHttpClient("ClimateControl", (client) =>
             {
+                // options.Address = new Uri("http://localhost:5040");
                 client.BaseAddress = _configuration.GetServiceUri("climatecontrol");
             });
             services.AddMemoryCache();
