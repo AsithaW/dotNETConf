@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Net.Http;
-using System.Threading.Channels;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Http;
-using Weather.Model;
+using Microsoft.OpenApi.Models;
 using Weather.Services;
 using Weather.Workers;
-using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace Weather
 {
@@ -42,7 +37,7 @@ namespace Weather
             })
             .ConfigurePrimaryHttpMessageHandler(_ => new HttpClientHandler()
             {
-                AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             });
             services.AddHttpClient("ClimateControl", (client) =>
             {

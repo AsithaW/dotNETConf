@@ -1,10 +1,8 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Json;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
-using System;
 
 Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webBuilder =>
 {
@@ -17,8 +15,7 @@ Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webBuilder =>
             {
                 var perfectTemperature = 65;
                 var tempRouteValue = (string)context.Request.RouteValues["temp"];
-                var temp = 0.0;
-                var isSuccess = double.TryParse(tempRouteValue, out temp);
+                var isSuccess = double.TryParse(tempRouteValue, out var temp);
                 var tolerance = 3;
 
                 if (isSuccess)

@@ -1,8 +1,6 @@
-﻿using Grpc.Net.ClientFactory;
+﻿using System;
+using Grpc.Net.ClientFactory;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using static Weather.Weather;
 
 namespace WeatherClientLib
@@ -14,14 +12,6 @@ namespace WeatherClientLib
         {
             services.AddGrpcClient<WeatherClient>(configure);
             services.AddScoped<IWeatherForecastService, GrpcWeatherForecastService>();
-            return services;
-        }
-
-        public static IServiceCollection AddHttpWeatherForecastService(
-            this IServiceCollection services, Action<HttpWeatherForecastServiceOptions> configure)
-        {
-            services.AddScoped<IWeatherForecastService, HttpWeatherForecastService>();
-            services.Configure(configure);
             return services;
         }
     }

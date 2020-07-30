@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
@@ -11,7 +9,7 @@ namespace Weather.Services
 {
     public class WeatherService : Weather.WeatherBase
     {
-        private IMemoryCache _cache;
+        private readonly IMemoryCache _cache;
 
         public WeatherService(IMemoryCache cache)
         {
@@ -36,7 +34,7 @@ namespace Weather.Services
 
         public static WeatherResponse GetCurrentWeatherResponse(Forecast forecast)
         {
-            if(forecast == null)
+            if (forecast == null)
             {
                 return new WeatherResponse()
                 {
@@ -56,7 +54,7 @@ namespace Weather.Services
                     Location = "Seattle"
                 };
             }
-            
+
             return new WeatherResponse()
             {
                 WeatherText = forecast.WeatherText,
