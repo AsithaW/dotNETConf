@@ -59,7 +59,7 @@ namespace Weather.Workers
                     {
                         var client = _httpClientFactory.CreateClient("AccuWeather");
 
-                        var response = await client.GetAsync($"/340247?apikey={_configuration["accuweathertoken"]}&details=true");
+                        var response = await client.GetAsync($"/340247?apikey={token}&details=true");
                         
                         model = await response.Content.ReadFromJsonAsync<Forecast[]>();
 
