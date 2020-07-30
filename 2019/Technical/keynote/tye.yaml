@@ -1,8 +1,0 @@
-name: WeatherService
-services:
-- name: climatecontrol
-  project: ClimateControl/ClimateControl.csproj
-- name: weather
-  project: Weather/Weather.csproj
-- name: blazor
-  project: BlazorWeather.Server/BlazorWeather.Server.csproj
