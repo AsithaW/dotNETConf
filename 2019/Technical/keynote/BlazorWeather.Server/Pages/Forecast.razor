@@ -58,7 +58,7 @@ else
         var initial = TimeSpan.FromSeconds(1);
         var delay = initial;
 
-        while (true)
+        while (!streamingWeatherCTS.IsCancellationRequested)
         {
             try
             {
