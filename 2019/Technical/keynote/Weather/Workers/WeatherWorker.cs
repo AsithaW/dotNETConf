@@ -81,7 +81,7 @@ namespace Weather.Workers
 
                         _logger.LogInformation($"Sending temp to {uri}");
 
-                        var climateControlResponse = await climateControlClient.GetAsync(uri);
+                        var climateControlResponse = await climateControlClient.PostAsync(uri, new StringContent(string.Empty));
                     }
                     catch
                     {

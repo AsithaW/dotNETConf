@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using Weather.Services;
 using Weather.Workers;
 
@@ -22,15 +21,10 @@ namespace Weather
             _configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(c => c.AddDefaultPolicy(builder => 
-            {
-                builder.AllowAnyOrigin();
-            }));
             services.AddGrpc();
+            
             services.AddHttpClient("AccuWeather", (client) =>
             {
                 client.BaseAddress = new Uri(_configuration["weather:uri"]);
@@ -39,19 +33,15 @@ namespace Weather
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             });
+            
             services.AddHttpClient("ClimateControl", (client) =>
             {
                 // options.Address = new Uri("http://localhost:5040");
                 client.BaseAddress = _configuration.GetServiceUri("climatecontrol");
             });
-            services.AddMemoryCache();
-            services.AddControllers();
-            services.AddHostedService<WeatherWorker>();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherApi", Version = "v1" });
-            });
+            services.AddMemoryCache();
+            services.AddHostedService<WeatherWorker>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,12 +54,6 @@ namespace Weather
 
             app.UseRouting();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API v1");
-            });
-            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<WeatherService>();
@@ -80,8 +64,6 @@ namespace Weather
                 });
 
                 endpoints.MapGet("/", async req => await req.Response.WriteAsync("Healthy"));
-                endpoints.MapControllers();
-
             });
         }
     }

@@ -11,7 +11,7 @@ Host.CreateDefaultBuilder().ConfigureWebHostDefaults(webBuilder =>
         app.UseRouting();
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapGet("/temperature/{temp}", async context =>
+            endpoints.MapPost("/temperature/{temp}", async context =>
             {
                 var perfectTemperature = 65;
                 var tempRouteValue = (string)context.Request.RouteValues["temp"];
