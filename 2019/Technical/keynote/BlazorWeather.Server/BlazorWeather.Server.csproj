@@ -14,7 +14,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.0.0-preview9.19457.4" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="3.0.0-rc1.19456.10" />
   </ItemGroup>
 
   <ItemGroup>
