@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWeather.Server", "Bla
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA29861E-6BD1-43E0-B528-2799A701A6EC}"
 	ProjectSection(SolutionItems) = preProject
+		keynote.snippet.txt = keynote.snippet.txt
 		README.md = README.md
 		tye.yaml = tye.yaml
 	EndProjectSection

@@ -57,12 +57,7 @@ namespace Weather
             {
                 endpoints.MapGrpcService<WeatherService>();
 
-                endpoints.MapGet("/proto", async req =>
-                {
-                    await req.Response.SendFileAsync("Protos/weather.proto", req.RequestAborted);
-                });
-
-                endpoints.MapGet("/", async req => await req.Response.WriteAsync("Healthy"));
+                endpoints.MapGet("/", context => context.Response.WriteAsync("Healthy"));
             });
         }
     }
