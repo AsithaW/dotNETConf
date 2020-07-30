@@ -10,8 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlazorWeather.Core\BlazorWeather.Core.csproj" />
-    <ProjectReference Include="..\WeatherServiceML\WeatherServiceML.csproj" />
+    <ProjectReference Include="..\WeatherClientLib\WeatherClientLib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,6 @@
     <UserSecretsId>3ee6d0f8-011d-4eb7-8f82-c4cfc8f1475b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
-
   <ItemGroup>
     <Protobuf Include="Protos\weather.proto" GrpcServices="Server" />
   </ItemGroup>

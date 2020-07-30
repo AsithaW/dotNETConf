@@ -1,15 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using static Weather.Weather;
 using WeatherClientLib;
 using WeatherServiceML;
 
@@ -36,7 +30,7 @@ namespace BlazorWeather
                 options.Address = Configuration.GetServiceUri("weather");
                 Console.WriteLine($"Backend URL is {options.Address}");
             });
-            services.AddScoped<IWeatherClassifier, MLWeatherClassifier>();
+            services.AddScoped<IWeatherClassifier, WeatherClassifier>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

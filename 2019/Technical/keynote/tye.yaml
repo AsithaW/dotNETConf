@@ -1,11 +1,7 @@
 name: WeatherService
 services:
 - name: climatecontrol
-  external: true
-  bindings:
-  - protocol: http
-    host: dotnetonpitop.ngrok.io
-    port: 80
+  project: ClimateControl/ClimateControl.csproj
 - name: weather
   project: Weather/Weather.csproj
 - name: blazor
