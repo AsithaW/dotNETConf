@@ -1,6 +1,0 @@
-- name: climatecontrol
-  external: true
-  bindings:
-  - protocol: http
-    host: dotnetonpitop.ngrok.io
-    port: 80
